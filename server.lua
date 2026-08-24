@@ -56,7 +56,6 @@ local linda = lanes.linda()
 
 local conf = { globals = _G }
 local server_data = { product_list = {} }
-lanes.gen("*", conf, data_loop)(linda, server_data)
-local a = lanes.gen("*", conf, server_loop)(linda)
 
-print(a[1])
+lanes.gen("*", conf, data_loop)(linda, server_data)
+lanes.gen("*", conf, server_loop)(linda):join()
